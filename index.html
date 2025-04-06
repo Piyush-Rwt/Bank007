@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bank App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <header class="app-header">
+            <div class="header-content">
+                <i class="fas fa-university logo-icon"></i>
+                <h1>NeoBank <span>Digital Banking</span></h1>
+            </div>
+        </header>
+
+        <nav class="app-nav">
+            <button class="nav-btn" onclick="showSection('create')">
+                <i class="fas fa-user-plus"></i>
+                <span>New Account</span>
+            </button>
+            <button class="nav-btn" onclick="showSection('transact')">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Transactions</span>
+            </button>
+            <button class="nav-btn" onclick="showSection('view')">
+                <i class="fas fa-search-dollar"></i>
+                <span>Account Info</span>
+            </button>
+        </nav>
+
+        <!-- Create Account Section -->
+        <section id="create" class="app-section">
+            <div class="section-header">
+                <i class="fas fa-id-card"></i>
+                <h2>Create New Account</h2>
+            </div>
+            <form id="createForm">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-wallet"></i> Initial Deposit ($)</label>
+                    <input type="number" id="initialDeposit" required min="50">
+                </div>
+                <button type="button" class="action-btn primary" onclick="createAccount()">
+                    <i class="fas fa-plus-circle"></i> Create Account
+                </button>
+            </form>
+            <div id="accountCreated" class="status-card success"></div>
+        </section>
+
+        <!-- Transaction Section -->
+        <section id="transact" class="app-section">
+            <div class="section-header">
+                <i class="fas fa-coins"></i>
+                <h2>Account Transactions</h2>
+            </div>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label><i class="fas fa-credit-card"></i> Account Number</label>
+                    <input type="text" id="accountNumber" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-money-bill-wave"></i> Amount ($)</label>
+                    <input type="number" id="amount" required min="1">
+                </div>
+                <div class="transaction-grid">
+                    <button type="button" class="action-btn success" onclick="handleTransaction('deposit')">
+                        <i class="fas fa-arrow-down"></i> Deposit
+                    </button>
+                    <button type="button" class="action-btn danger" onclick="handleTransaction('withdraw')">
+                        <i class="fas fa-arrow-up"></i> Withdraw
+                    </button>
+                </div>
+            </form>
+            <div id="transactionResult" class="status-card"></div>
+        </section>
+
+        <!-- View Account Section -->
+        <section id="view" class="app-section">
+            <div class="section-header">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h2>Account Information</h2>
+            </div>
+            <form id="viewForm">
+                <div class="form-group">
+                    <label><i class="fas fa-search"></i> Account Number</label>
+                    <input type="text" id="viewAccountNumber" required>
+                </div>
+                <button type="button" class="action-btn primary" onclick="viewAccountDetails()">
+                    <i class="fas fa-file-alt"></i> View Details
+                </button>
+            </form>
+            <div id="accountDetails" class="account-card"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
